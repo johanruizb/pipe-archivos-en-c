@@ -63,7 +63,8 @@ int main()
 		// El proceso padre ejecutará ls.
 		// Cierra el descriptor de lectura de pipe.
 		// wait(NULL);
-		// random_number = rand() % 1000 + 1;
+		random_number = rand() % 1000 + 1;
+		printf("Random number is %d\n", random_number);
 
 		close(fd[READ]);
 		// Redirigir STDOUT para escribir en el pipe.
