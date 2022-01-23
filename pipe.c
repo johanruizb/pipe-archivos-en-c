@@ -12,22 +12,20 @@
 
 // int argc, char const *argv[]
 
-int main()
-{
+int main() {
 	printf("Init main \n");
 	srand(time(NULL));
 
 	pid_t pid; // fork
 	int fd[2]; // Vector de posiciones
 	int random_number;
-	char *argv[] = {"cat", "/etc/hosts", 0};
-	char *argv1[] = {"sort", "/etc/hosts", 0};
+	char* argv[] = {"cat", "/etc/hosts", 0};
+	char* argv1[] = {"sort", "/etc/hosts", 0};
 	// 0-Entrada Estandar
 	// 1-Salida Estandar
 
 	printf("Pipe create\n");
-	if (pipe(fd) == -1)
-	{
+	if (pipe(fd) == -1) {
 		// Funcion que permite comunicar 2 procesos 0-entrada 1-salida
 		perror("Creating pipe \n");
 		exit(EXIT_FAILURE);
@@ -37,14 +35,12 @@ int main()
 
 	pid = fork();
 
-	if (pid < 0)
-	{
+	if (pid < 0) {
 		perror("fork() failed");
 		exit(EXIT_FAILURE);
 	}
 
-	switch (pid)
-	{
+	switch (pid) {
 	case 0:
 		printf("Process hijo create\n");
 		// El proceso hijo ejecutará wc.

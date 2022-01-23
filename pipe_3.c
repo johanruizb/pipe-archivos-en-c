@@ -10,8 +10,7 @@
 #define READ 0
 #define WRITE 1
 
-int main()
-{
+int main() {
     srand(time(NULL));
 
     pid_t pid; // Fork
@@ -23,22 +22,19 @@ int main()
     // 0-Entrada Estandar
     // 1-Salida Estandar
 
-    if (pipe(fd) == -1)
-    {
+    if (pipe(fd) == -1) {
         // Funcion que permite comunicar 2 procesos 0-entrada 1-salida
         perror("Creating pipe\n");
         exit(EXIT_FAILURE);
     }
 
     pid = fork();
-    if (pid < 0)
-    {
+    if (pid < 0) {
         perror("fork() failed");
         exit(EXIT_FAILURE);
     }
 
-    switch (pid)
-    {
+    switch (pid) {
     case 0:
         // El proceso hijo ejecutará wc.
         // Cierra el descriptor de escritura de pipe.
@@ -49,15 +45,10 @@ int main()
         int numero = atoi(readbuffer);
 
         if (numero >= 500)
-        {
             printf("Numero mayor o igual a 500 (%d)\n", numero);
-        }
         else if (numero < 500)
-        {
             printf("Numero menor a 500 (%d)\n", numero);
-        }
 
-        //printf("Read string: %s\n", readbuffer);
 
         break;
 
