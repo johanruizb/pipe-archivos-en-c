@@ -22,32 +22,29 @@
 #define READ 0
 #define WRITE 1
 
-/*
-  * El proceso padre generará un núo 
-  * entero aleatorio entre 1 y 1000, y
-  * este número será enviado a . 
-  * El hijo imprimirá el mensaje “menor0” 
-  * si el número es menor que 500 y “mayor o igu0” 
-  * si el número es mayor o igual a 500.
-  *
-  * @param[out] int retorna 0, en caso de una ejecucion correcta
- */
+ /*
+   * El proceso padre generará un núo 
+   * entero aleatorio entre 1 y 1000, y
+   * este número será enviado a. 
+   * El hijo imprimirá el mensaje “meno0” 
+   * si el número es menor que 500 y “mayor o ig0” 
+   * si el número es mayor o igual a 500.
+   *
+   * @param[out] int retorna 0, en caso de una ejecucion correcta
+  */
 
-int main()
-{
+int main() {
     pid_t pid;
     int fd[2];
     char buffer[80];
     srand(time(NULL));
 
-    if (pipe(fd) == -1)
-    {
+    if (pipe(fd) == -1) {
         perror("Creating pipe");
         exit(EXIT_FAILURE);
     }
 
-    switch (pid = fork())
-    {
+    switch (pid = fork()) {
 
     case 0: //Hijo
 
@@ -56,8 +53,7 @@ int main()
         read(fd[READ], buffer, sizeof(buffer));
         int num = atoi(buffer);
         int file = open("resultado.txt", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-        if (file >= 0)
-        {
+        if (file >= 0) {
             if (num >= 500)
                 sprintf(buffer, "%d es mayor o igual a 500\n", num);
 
@@ -67,8 +63,7 @@ int main()
             printf("Registro de respuesta disponible en 'resultado.txt'. Usa: \n\t> cat resultado.txt\n");
             write(file, buffer, strlen(buffer));
         }
-        else
-        {
+        else {
             perror("Error Archivo");
             exit(EXIT_FAILURE);
         }
