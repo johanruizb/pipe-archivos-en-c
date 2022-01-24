@@ -48,8 +48,6 @@ int main() {
             printf("Numero mayor o igual a 500 (%d)\n", numero);
         else if (numero < 500)
             printf("Numero menor a 500 (%d)\n", numero);
-
-
         break;
 
     default:
@@ -62,7 +60,6 @@ int main() {
 
         close(fd[READ]);                          // El proceso hijo no necesita este extremo del pipe
         write(fd[WRITE], str, (strlen(str) + 1)); // Enviar str a traves del pipe
-
         break;
     }
 
