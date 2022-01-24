@@ -64,7 +64,7 @@ int main()
             else
                 sprintf(buffer, "%d es menor que 500\n", num);
 
-            printf("Registro de respuesta disponible en 'respuesta.txt'. Usa: \n\t> cat respuesta.txt\n");
+            printf("Registro de respuesta disponible en 'resultado.txt'. Usa: \n\t> cat resultado.txt\n");
             write(file, buffer, strlen(buffer));
         }
         else
