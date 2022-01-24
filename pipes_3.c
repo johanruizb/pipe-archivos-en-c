@@ -25,9 +25,9 @@
  /*
    * El proceso padre generará un núo 
    * entero aleatorio entre 1 y 1000, y
-   * este número será enviado a. 
-   * El hijo imprimirá el mensaje “meno0” 
-   * si el número es menor que 500 y “mayor o ig0” 
+   * este número será enviado . 
+   * El hijo imprimirá el mensaje “men0” 
+   * si el número es menor que 500 y “mayor o i0” 
    * si el número es mayor o igual a 500.
    *
    * @param[out] int retorna 0, en caso de una ejecucion correcta
