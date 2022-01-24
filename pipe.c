@@ -20,7 +20,7 @@ int main() {
 	int fd[2]; // Vector de posiciones
 	int random_number;
 	char* argv[] = {"cat", "/etc/hosts", 0};
-	char* argv1[] = {"sort", "/etc/hosts", 0};
+	//char* argv1[] = {"sort", "/etc/hosts", 0};
 	// 0-Entrada Estandar
 	// 1-Salida Estandar
 
@@ -49,7 +49,8 @@ int main() {
 		// Redirigir STDIN para leer desde el pipe.
 		dup2(fd[READ], STDIN_FILENO); //Sobreescribir la salida estandar del hijo
 		// Execute wc
-		// printf("Parent: %c", STDIN_FILENO);
+		//printf("Parent: %c", STDIN_FILENO);
+		char* argv1[] = {"sort", STDIN_FILENO, NULL};
 		execvp(argv1[0], argv1);
 		perror("Error inesperado de execvp()");
 		exit(EXIT_FAILURE);
