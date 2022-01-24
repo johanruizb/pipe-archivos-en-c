@@ -42,7 +42,6 @@ int main() {
 	char* argv[] = { "cat", "/etc/hosts", 0 };
 
 
-	printf("Pipe create\n");
 	if (pipe(fd) == -1) {
 		perror("Creating pipe \n");
 		exit(EXIT_FAILURE);
@@ -57,8 +56,6 @@ int main() {
 
 	switch (pid) {
 	case 0:
-		printf("Process hijo create\n");
-
 		close(fd[WRITE]);
 		dup2(fd[READ], STDIN_FILENO);
 
@@ -70,9 +67,7 @@ int main() {
 		break;
 
 	default:
-
 		random_number = rand() % 1000 + 1;
-		printf("Random number is %d\n", random_number);
 
 		close(fd[READ]);
 		dup2(fd[WRITE], STDOUT_FILENO);
